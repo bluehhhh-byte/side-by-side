@@ -48,6 +48,10 @@
 
   // What inspired the story — listed after the afterword. 소설은 해설 영상, 영화는 예고편, 음악은 음원.
   const INSPIRATIONS = [
+    { kind: '드라마', by: '차영훈 연출, 권혜주 극본', title: '웰컴투 삼달리', year: 2023, url: 'https://www.youtube.com/results?search_query=%EC%9B%B0%EC%BB%B4%ED%88%AC%20%EC%82%BC%EB%8B%AC%EB%A6%AC%20%EC%98%88%EA%B3%A0%ED%8E%B8' },
+    { kind: '드라마', by: '유제원 연출, 신하은 극본', title: '갯마을 차차차', year: 2021, url: 'https://www.youtube.com/results?search_query=%EA%B0%AF%EB%A7%88%EC%9D%84%20%EC%B0%A8%EC%B0%A8%EC%B0%A8%20%EC%98%88%EA%B3%A0%ED%8E%B8' },
+    { kind: '영화', by: '허진호', title: '봄날은 간다', year: 2001, url: 'https://www.youtube.com/results?search_query=%EB%B4%84%EB%82%A0%EC%9D%80%20%EA%B0%84%EB%8B%A4%20%EC%98%88%EA%B3%A0%ED%8E%B8' },
+    { kind: '소설', by: '김기창', title: '기후변화 시대의 사랑', year: 2021, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EA%B8%B0%EC%B0%BD%20%EA%B8%B0%ED%9B%84%EB%B3%80%ED%99%94%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EB%9E%91' },
     { kind: '음악', by: '성시경', title: '넌 감동이었어', year: 2002, url: 'https://www.youtube.com/results?search_query=%EC%84%B1%EC%8B%9C%EA%B2%BD%20%EB%84%8C%20%EA%B0%90%EB%8F%99%EC%9D%B4%EC%97%88%EC%96%B4' },
     { kind: '음악', by: '김연우', title: '사랑한다는 흔한 말', year: 2006, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EC%97%B0%EC%9A%B0%20%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4%EB%8A%94%20%ED%9D%94%ED%95%9C%20%EB%A7%90' },
     { kind: '음악', by: '기리보이', title: '이상기후', year: 2022, url: 'https://www.youtube.com/results?search_query=%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4%20%EC%9D%B4%EC%83%81%EA%B8%B0%ED%9B%84' },
@@ -334,6 +338,7 @@
             <div class="cover-head">
               <span class="cover-rule"></span>
               <h1 class="cover-title">나란히</h1>
+              <span class="cover-subtitle">예보에 없던 사람</span>
               <span class="cover-hanja">竝 肩</span>
             </div>
             <svg class="cover-pond-svg" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
