@@ -139,8 +139,15 @@
     77: { key: 'fireflies', density: 0.3 }  // 비 갠 여름밤, 별
   };
 
-  // 장면별 생성 이미지. 'S#번호': 'scenes/파일.webp' — 파일을 넣고 여기에 등록하면 장면 머리 아래에 뜬다
+  // 장면 이미지: repo의 scenes/01.png … 21.png 를 올리면 자동 연결. 없는 파일은 조용히 건너뜀
+  const SCENE_IMAGE_FILES = { 1: '01', 2: '02', 6: '03', 9: '04', 12: '06', 14: '05', 17: '07', 22: '08', 24: '09', 26: '10', 34: '11', 37: '12', 38: '13', 42: '14', 49: '15', 51: '16', 57: '17', 62: '18', 65: '19', 73: '20', 77: '21' };
   const SCENE_IMAGES = {};
+  function probeSceneImages() {
+    return Promise.all(Object.entries(SCENE_IMAGE_FILES).map(([sc, f]) => {
+      const src = `scenes/${f}.png`;
+      return fetch(src, { method: 'HEAD', cache: 'no-cache' }).then((r) => { if (r.ok) SCENE_IMAGES[sc] = src; }).catch(() => {});
+    }));
+  }
 
   // The scene showing at the end of a content page (so a new weather scene starts with its page)
   function sceneAt(page) {
@@ -1602,6 +1609,11 @@
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => { if (state.mode === 'flip') preservePositionAndRepaginate(); });
     }
+    probeSceneImages().then(() => {
+      if (!Object.keys(SCENE_IMAGES).length) return;
+      if (state.mode === 'flip') preservePositionAndRepaginate();
+      else if (el.scrollContent.innerHTML.trim()) { const y = el.scrollViewport.scrollTop; renderScrollModeContent(); el.scrollViewport.scrollTop = y; }
+    });
   }
 
   // Debug/test handle (read-only use)
