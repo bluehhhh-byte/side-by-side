@@ -66,7 +66,10 @@
     if (/^\*[^*]+\*$/.test(text)) return `<em class="aside">${escapeHtml(text.slice(1, -1))}</em>`; // 3장 듀엣 독백
     let html = escapeHtml(text);
     for (const t of SIGN_TEXTS) if (text.includes(t)) html = html.replace(escapeHtml(t), `<strong class="sign">${escapeHtml(t)}</strong>`);
-    return html;
+    // 시나리오 혼합체: 장면 머리(S#n.), INSERT/FLASHBACK 줄, '이름 : 대사'
+    if (/^S#\d+\./.test(text)) return `<span class="scene-head">${html}</span>`;
+    if (/^(INSERT|FLASHBACK|BACK TO)\b/.test(text)) return `<span class="sc-insert">${html}</span>`;
+    return html.replace(/^([^:<]{1,24}?) : /, '<span class="who">$1</span>');
   }
 
   // Line-art motif per chapter (64×64, stroke = currentColor)
@@ -1111,7 +1114,7 @@
 
   function speakText(text, onDone) {
     cancelSpeechInternal();
-    const chunks = chunkSentences(text.replace(/\*/g, ''));
+    const chunks = chunkSentences(text.replace(/\*/g, '').replace(/^S#\d+\.\s*/, '').replace(/^[^:]{1,24}? : /, ''));
     let k = 0;
     const speakNext = () => {
       if (k >= chunks.length) { onDone(); return; }

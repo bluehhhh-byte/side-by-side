@@ -837,3 +837,11 @@ html[data-theme="sepia"] .cover-title, html[data-theme="paper"] .cover-title, ht
 
 /* 3장 듀엣 독백 (*…*) */
 .novel-para em.aside { font-style: italic; opacity: .78; }
+
+/* 시나리오 혼합체 */
+p.novel-para:has(> .scene-head) { text-indent: 0; margin-top: 1.6em; }
+.scene-head { display: block; font-family: var(--font-ui); font-size: 0.78em; font-weight: 700; letter-spacing: 0.04em; color: var(--accent, #d9b46a); border-bottom: 1px solid currentColor; padding-bottom: 0.3em; opacity: .9; }
+p.novel-para:has(> .who) { text-indent: 0; padding-left: 4.2em; position: relative; }
+.who { position: absolute; left: 0; width: 3.9em; font-family: var(--font-ui); font-size: 0.82em; font-weight: 700; line-height: inherit; color: var(--text-secondary); word-break: keep-all; }
+p.novel-para:has(> .sc-insert) { text-indent: 0; }
+.sc-insert { font-family: var(--font-ui); font-size: 0.85em; color: var(--text-secondary); }

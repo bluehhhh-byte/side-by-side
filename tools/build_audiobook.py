@@ -15,6 +15,7 @@ import asyncio
 import io
 import json
 import pathlib
+import re
 import sys
 import time
 
@@ -65,7 +66,7 @@ def mp3_seconds(data):
 
 async def build_chapter(ch, cfg, sem):
     title = f"{ch['number']}. {ch['subtitle']}."
-    segments = [title] + [p.replace("*", "") for p in ch["paragraphs"]]
+    segments = [title] + [re.sub(r"^[^:]{1,24}? : ", "", re.sub(r"^S#\d+\.\s*", "", p.replace("*", ""))) for p in ch["paragraphs"]]
     datas = await asyncio.gather(*(synth(t, cfg, sem) for t in segments))
     out = io.BytesIO()
     t = 0.0
