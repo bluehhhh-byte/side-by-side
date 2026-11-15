@@ -69,7 +69,7 @@
     // 시나리오 혼합체: 장면 머리(S#n.), INSERT/FLASHBACK 줄, '이름 : 대사'
     if (/^S#\d+\./.test(text)) return `<span class="scene-head">${html}</span>`;
     if (/^(INSERT|FLASHBACK|BACK TO)\b/.test(text)) return `<span class="sc-insert">${html}</span>`;
-    return html.replace(/^([^:<]{1,24}?) : /, '<span class="who">$1</span>');
+    return html.replace(/^([^:<(]{1,24}?)(?: \(([^)]+)\))? : /, (m, who, tag) => `<span class="who">${who}</span>` + (tag ? `<span class="who-tag">${tag}</span>` : ''));
   }
 
   // Line-art motif per chapter (64×64, stroke = currentColor)
