@@ -50,7 +50,7 @@
   const INSPIRATIONS = [
     { kind: '음악', by: '성시경', title: '넌 감동이었어', year: 2002, url: 'https://www.youtube.com/results?search_query=%EC%84%B1%EC%8B%9C%EA%B2%BD%20%EB%84%8C%20%EA%B0%90%EB%8F%99%EC%9D%B4%EC%97%88%EC%96%B4' },
     { kind: '음악', by: '김연우', title: '사랑한다는 흔한 말', year: 2006, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EC%97%B0%EC%9A%B0%20%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4%EB%8A%94%20%ED%9D%94%ED%95%9C%20%EB%A7%90' },
-    { kind: '음악', by: '기리보이', title: '이상기후', year: '', url: 'https://www.youtube.com/results?search_query=%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4%20%EC%9D%B4%EC%83%81%EA%B8%B0%ED%9B%84' },
+    { kind: '음악', by: '기리보이', title: '이상기후', year: 2022, url: 'https://www.youtube.com/results?search_query=%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4%20%EC%9D%B4%EC%83%81%EA%B8%B0%ED%9B%84' },
     { kind: '음악', by: '박효신', title: '좋은 사람', year: 2002, url: 'https://www.youtube.com/results?search_query=%EB%B0%95%ED%9A%A8%EC%8B%A0%20%EC%A2%8B%EC%9D%80%20%EC%82%AC%EB%9E%8C' },
     { kind: '음악', by: '김동률', title: '사랑한다 말해도', year: 2014, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EB%8F%99%EB%A5%A0%20%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4%20%EB%A7%90%ED%95%B4%EB%8F%84' },
     { kind: '음악', by: '한로로', title: '화해', year: 2023, url: 'https://www.youtube.com/results?search_query=%ED%95%9C%EB%A1%9C%EB%A1%9C%20%ED%99%94%ED%95%B4' },
