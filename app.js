@@ -67,8 +67,10 @@
     let html = escapeHtml(text);
     for (const t of SIGN_TEXTS) if (text.includes(t)) html = html.replace(escapeHtml(t), `<strong class="sign">${escapeHtml(t)}</strong>`);
     // 시나리오 혼합체: 장면 머리(S#n.), INSERT/FLASHBACK 줄, '이름 : 대사'
-    if (/^S#\d+\./.test(text)) return `<span class="scene-head">${html}</span>`;
-    if (/^(INSERT|FLASHBACK|BACK TO)\b/.test(text)) return `<span class="sc-insert">${html}</span>`;
+    const sm = text.match(/^S#(\d+)\./);
+    if (sm) return `<span class="scene-head">${html}</span>` + (SCENE_IMAGES[sm[1]] ? `<img class="scene-img" src="${SCENE_IMAGES[sm[1]]}" alt="" width="1600" height="900" loading="lazy">` : '');
+    const lm = text.match(/^(화면|회상 몽타주|회상|다시 현재)(?: — | (?=\(S#))/);
+    if (lm) return `<span class="sc-insert"><span class="sc-badge">${lm[1]}</span>${html.slice(escapeHtml(lm[0]).length)}</span>`;
     return html.replace(/^([^:<(]{1,24}?)(?: \(([^)]+)\))? : /, (m, who, tag) => `<span class="who">${who}</span>` + (tag ? `<span class="who-tag">${tag}</span>` : ''));
   }
 
@@ -113,24 +115,47 @@
     seasonFx: true
   };
 
-  // Season per chapter — 곡성의 여름 → 가을 → 이상기후 → 겨울 폭우 → 첫눈 → 서울 겨울 → 입춘 → 극한호우 → 비 갠 여름밤
-  const CHAPTER_SEASON = {
-    1: { key: 'fireflies', density: 0.5 }, // 7월 폭염, 섬진강 여름밤
-    2: { key: 'leaves', density: 0.4 },    // 늦여름에서 가을
-    3: { key: 'rain', density: 0.4 },      // 11월 이상고온, 철 지난 소나기
-    4: { key: 'rain', density: 1 },        // 12월 겨울 폭우
-    5: { key: 'snow', density: 0.6 },      // 1월 첫눈, 캐노피
-    6: { key: 'snow', density: 0.3 },      // 서울의 겨울
-    7: { key: 'leaves', density: 0.5 },    // 가을 회상, 세차장과 자전거길
-    8: { key: 'petals', density: 0.3 },    // 입춘, 이른 매화
-    9: { key: 'rain', density: 1 },        // 7월 극한호우
-    10: { key: 'fireflies', density: 0.4 } // 비 갠 여름밤, 별
+  // Season per scene (S#) — 날씨·계절이 화면에 보이는 장면에만. 나머지는 효과 없음
+  const SCENE_SEASON = {
+    6: { key: 'rain', density: 0.8 },       // 첫 소나기, 캐노피 아래
+    9: { key: 'fireflies', density: 0.3 },  // 8월 열대야, 옛집 마루
+    10: { key: 'fireflies', density: 0.2 },
+    18: { key: 'leaves', density: 0.3 },    // 10월 마지막 날, 섬진강 둑
+    20: { key: 'rain', density: 0.6 },      // 11월 철 지난 소나기
+    25: { key: 'rain', density: 0.4 },      // 병원 창밖 소나기
+    26: { key: 'rain', density: 1 },        // 12월 겨울 폭우
+    27: { key: 'rain', density: 0.7 },
+    28: { key: 'rain', density: 1 },        // 빗속으로 걸어가는 해원
+    32: { key: 'rain', density: 0.2 },      // 비가 그치는 새벽
+    34: { key: 'snow', density: 0.6 },      // 첫눈, 캐노피
+    35: { key: 'snow', density: 0.4 },
+    51: { key: 'leaves', density: 0.45 },   // 10월 섬진강 자전거길
+    56: { key: 'petals', density: 0.3 },    // 곡성 매화, 열흘 일찍
+    60: { key: 'petals', density: 0.15 },   // 2월 바람, 흙 녹는 냄새
+    62: { key: 'rain', density: 0.5 },      // 정체전선, 레이더
+    65: { key: 'rain', density: 1 },        // 마을회관
+    66: { key: 'rain', density: 1 },        // 불 켜진 주유소
+    68: { key: 'rain', density: 1 },        // 뒷산이 무너진다
+    77: { key: 'fireflies', density: 0.3 }  // 비 갠 여름밤, 별
   };
 
-  function seasonFor(chapterId, pageType) {
-    if (pageType === 'cover' || chapterId === 0) return { key: 'none', density: 0 };
-    if (chapterId === CREDITS_CHAPTER_ID) return { key: 'none', density: 0 }; // 클로징 멘트 — 맑은 밤
-    return CHAPTER_SEASON[chapterId] || { key: 'none', density: 0 };
+  // 장면별 생성 이미지. 'S#번호': 'scenes/파일.webp' — 파일을 넣고 여기에 등록하면 장면 머리 아래에 뜬다
+  const SCENE_IMAGES = {};
+
+  // The scene showing at the end of a content page (so a new weather scene starts with its page)
+  function sceneAt(page) {
+    if (!page || page.type !== 'content') return 0;
+    const ch = (window.NOVEL_DATA.chapters || [])[page.chapterId - 1];
+    if (!ch) return 0;
+    for (let i = Math.min(page.endParaIndex, ch.paragraphs.length - 1); i >= 0; i--) {
+      const m = ch.paragraphs[i].match(/^S#(\d+)\./);
+      if (m) return Number(m[1]);
+    }
+    return 0;
+  }
+
+  function seasonFor(page) {
+    return SCENE_SEASON[sceneAt(page)] || { key: 'none', density: 0 };
   }
 
   const $ = (id) => document.getElementById(id);
@@ -399,6 +424,7 @@
         pIdx++;
         if (measureBody.scrollHeight > maxH) break; // oversized single paragraph
       }
+      if (pIdx < paras.length && parts.length > 1 && parts[parts.length - 1].includes('scene-head')) { parts.pop(); pIdx--; }
       out.push({ start, end: pIdx - 1, html: (out.length ? '' : headHtml) + parts.join('') });
     } while (pIdx < paras.length);
     if (tailHtml) {
@@ -812,8 +838,7 @@
     });
 
     if (window.SeasonFX) {
-      const pageType = state.mode === 'scroll' ? (chapterId === 0 ? 'cover' : 'content') : (page ? page.type : 'cover');
-      const s = seasonFor(chapterId, pageType);
+      const s = seasonFor(state.mode === 'flip' ? page : null); // ponytail: scroll mode has no per-scene tracking, so no weather there
       window.SeasonFX.setSeason(s.key, s.density);
     }
 

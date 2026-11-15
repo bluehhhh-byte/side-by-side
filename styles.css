@@ -846,3 +846,13 @@ p.novel-para:has(> .who) { text-indent: 0; padding-left: 4.2em; position: relati
 .who-tag { display: inline-block; margin-right: 0.45em; padding: 0 0.45em; border: 1px solid currentColor; border-radius: 999px; font-family: var(--font-ui); font-size: 0.68em; line-height: 1.6; vertical-align: 0.15em; color: var(--accent, #d8b56a); opacity: .85; }
 p.novel-para:has(> .sc-insert) { text-indent: 0; }
 .sc-insert { font-family: var(--font-ui); font-size: 0.85em; color: var(--text-secondary); }
+
+/* 모바일 가독성: 시나리오 혼합체는 왼쪽 정렬, 어절 단위 줄바꿈, 들여쓰기 없음 */
+.page-body-content p.novel-para, .scroll-chapter-block p { text-indent: 0; text-align: left; word-break: keep-all; overflow-wrap: anywhere; margin-bottom: 0.85em; }
+p.novel-para:has(> .who) { padding-left: 3.3em; }
+.who { width: 3.6em; font-size: 0.8em; }
+p.novel-para:has(> .scene-head) { margin-top: 1.9em; margin-bottom: 1em; }
+.scene-head { font-size: 0.76em; line-height: 1.5; }
+.scene-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin: 0.7em 0 0; border-radius: 10px; background: var(--accent-soft); }
+.sc-insert { display: block; padding: 0.35em 0 0.35em 0.75em; border-left: 2px solid var(--accent-soft, rgba(216,181,106,.3)); }
+.sc-badge { display: inline-block; margin-right: 0.5em; padding: 0 0.5em; border-radius: 999px; background: var(--accent-soft, rgba(216,181,106,.13)); color: var(--accent, #d8b56a); font-size: 0.78em; font-weight: 700; line-height: 1.65; vertical-align: 0.08em; }
