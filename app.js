@@ -330,7 +330,6 @@
             <defs><linearGradient id="cvSky" x1="0" y1="0" x2="0" y2="1"><stop class="cv-sky-a" offset="0"/><stop class="cv-sky-b" offset="1"/></linearGradient></defs>
             <rect width="400" height="700" fill="url(#cvSky)"/>
             ${coverStarsSvg()}
-            <line class="cover-shooting" x1="262" y1="330" x2="304" y2="296"/>
           </svg>
           <div class="cover-frame-line" aria-hidden="true"></div>
           <span class="cover-genre">단편소설</span>
@@ -339,27 +338,35 @@
               <span class="cover-rule"></span>
               <h1 class="cover-title">나란히</h1>
               <span class="cover-subtitle">예보에 없던 사람</span>
-              <span class="cover-hanja">竝 肩</span>
             </div>
-            <svg class="cover-pond-svg" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <defs><radialGradient id="cvGlow" cx="50%" cy="60%" r="55%"><stop class="cv-glow-a" offset="0"/><stop class="cv-glow-b" offset="1"/></radialGradient></defs>
-              <ellipse cx="200" cy="76" rx="210" ry="60" fill="url(#cvGlow)"/>
-              <line class="cover-horizon" x1="30" y1="46" x2="370" y2="46"/>
-              <ellipse class="cover-pond" cx="200" cy="80" rx="152" ry="27"/>
-              <ellipse class="cover-ripple-ring" cx="200" cy="80" rx="60" ry="11"/>
-              <ellipse class="cover-ripple-ring r2" cx="200" cy="80" rx="60" ry="11"/>
-              <ellipse class="cover-ripple-ring r3" cx="200" cy="80" rx="60" ry="11"/>
-              <circle class="cover-orb" cx="200" cy="20" r="4.5"/>
-              <ellipse class="cover-orb-reflection" cx="200" cy="80" rx="9" ry="3"/>
+            <svg class="cover-pond-svg cover-scene-svg" viewBox="80 46 240 104" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <radialGradient id="cvGlow" cx="50%" cy="50%" r="50%"><stop class="cv-glow-a" offset="0"/><stop class="cv-glow-b" offset="1"/></radialGradient>
+                <linearGradient id="cvLight" x1="0" y1="0" x2="0" y2="1"><stop class="cv-light-a" offset="0"/><stop class="cv-light-b" offset="1"/></linearGradient>
+              </defs>
+              <ellipse cx="200" cy="100" rx="200" ry="62" fill="url(#cvGlow)"/>
+              <path class="cover-ridge" d="M-10 96 L28 74 L58 86 L104 56 L146 82 L170 72 L196 88 L238 64 L276 84 L312 60 L352 80 L410 70 L410 118 L-10 118 Z"/>
+              <circle class="cover-village" cx="64" cy="108" r="1.3"/><circle class="cover-village" cx="74" cy="110" r="1"/><circle class="cover-village" cx="338" cy="107" r="1.1"/>
+              <line class="cover-ground" x1="0" y1="118" x2="400" y2="118"/>
+              <polygon points="156,86 244,86 266,118 134,118" fill="url(#cvLight)"/>
+              <line class="cover-pillar" x1="164" y1="86" x2="164" y2="118"/><line class="cover-pillar" x1="236" y1="86" x2="236" y2="118"/>
+              <rect class="cover-canopy" x="148" y="79" width="104" height="7" rx="1.5"/>
+              <rect class="cover-pump" x="174" y="104" width="7" height="14" rx="1"/><rect class="cover-pump" x="219" y="104" width="7" height="14" rx="1"/>
+              <g class="cover-person"><circle cx="194" cy="100.5" r="2.7"/><path d="M190.6 118 L191.2 106.2 Q194 103.6 196.8 106.2 L197.4 118 Z"/></g>
+              <g class="cover-person"><circle cx="206" cy="101" r="2.5"/><path d="M202.8 118 L203.3 106.6 Q206 104.2 208.7 106.6 L209.2 118 Z"/></g>
+              <ellipse class="cover-puddle" cx="200" cy="130" rx="92" ry="9"/>
+              <rect class="cover-canopy-reflection" x="160" y="127" width="80" height="3" rx="1.5"/>
+              <line class="cover-river" x1="20" y1="142" x2="380" y2="142"/>
             </svg>
             <p class="cover-epigraph">
-              <span class="epigraph-line">“마주 앉으면 서로의 얼굴이 보인다.</span>
+              <span class="epigraph-line">“마주 앉으면</span>
+              <span class="epigraph-line">서로의 얼굴이 보인다.</span>
               <span class="epigraph-line epigraph-gap">나란히 서면</span>
               <span class="epigraph-line">같은 길이 보인다.”</span>
             </p>
             <div class="cover-foot">
               <button type="button" class="btn-open-book" data-action="open-first-chapter">책 펼치기 →</button>
-              <span class="cover-date-meta">2026년 11월. 초고.</span>
+              <span class="cover-date-meta">2026년 11월. 펴냄.</span>
             </div>
           </div>
         </div>`

@@ -863,3 +863,20 @@ p.novel-para:has(> .who) { display: flow-root; }
 
 /* 표지 부제 */
 .cover-subtitle { display: block; margin-top: 10px; font-family: var(--font-display); font-size: clamp(0.95rem, 4.2vw, 1.15rem); font-weight: 600; letter-spacing: 0.18em; padding-left: 0.18em; color: var(--text-secondary); animation: coverRise 1.2s var(--ease-out) 0.25s both; }
+
+/* 표지 장면: 비 갠 밤, 섬진강 국도변 주유소 캐노피 아래 나란히 선 두 사람 */
+.cover-scene-svg { height: clamp(120px, 20vh, 170px); }
+.cv-light-a { stop-color: var(--accent); stop-opacity: 0.42; }
+.cv-light-b { stop-color: var(--accent); stop-opacity: 0; }
+.cover-ridge { fill: rgba(0, 0, 0, 0.22); stroke: var(--accent-line); stroke-width: 0.7; stroke-linejoin: round; }
+.cover-ground, .cover-river { stroke: var(--accent-line); stroke-width: 0.7; }
+.cover-river { opacity: 0.5; stroke-dasharray: 18 7 4 7; }
+.cover-pillar { stroke: var(--accent-line); stroke-width: 1.4; }
+.cover-canopy { fill: var(--accent-2); filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 18px var(--accent-glow)); animation: canopyHum 6s ease-in-out infinite; }
+.cover-canopy-reflection { fill: var(--accent); opacity: 0.35; filter: blur(2.5px); }
+.cover-pump { fill: none; stroke: var(--accent); stroke-width: 0.9; opacity: 0.75; }
+.cover-person { fill: var(--bg-page); stroke: var(--accent-line); stroke-width: 0.5; }
+.cover-puddle { fill: var(--water); }
+.cover-village { fill: var(--accent-2); opacity: 0.75; }
+@keyframes canopyHum { 0%, 100% { opacity: 1; } 50% { opacity: 0.86; } }
+.cover-epigraph .epigraph-gap { margin-top: 0.75em; }
