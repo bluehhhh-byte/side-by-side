@@ -28,22 +28,21 @@
 
   const DECK_AUTOHIDE_MS = 5200;
 
-  // Ending credits (관측 노트, 뒷장) — edit freely.
+  // Ending credits (클로징 멘트) — edit freely.
   const CREDITS_CHAPTER_ID = 99;
-  // 관측 노트, 뒷장 — 에필로그. '*' = 장면 나눔
+  // 클로징 멘트 — 에필로그. '*' = 장면 나눔
   const AFTERWORD_PARAS = [
-    "11월 6일 09시. 맑음. 기온 7.4도. 바람 북서 8미터. 첫 관측. 손이 떨려서 숫자를 두 번 고쳐 씀.",
+    "7월 21일, 밤 뉴스. 남부 지방 장마는 이번 주 후반 끝나겠습니다. 비가 그친 뒤에도 산비탈 가까이는 며칠 더 조심하십시오. 흙은 비보다 늦게 무너집니다.",
     "*",
-    "1월 18일 00시. 눈. 적설 1.2센티미터. 같은 밤을 썼다. 그도 쓰고 있을까.",
+    "8월 9일, 주말 뉴스. 습도가 높아 체감온도는 35도까지 오르겠습니다. 여름 체감온도는 바람이 아니라 습도로 봅니다. 곡성의 어느 분께 배운 겁니다.",
     "*",
-    "2월 2일 06시. 흐림. 기온 영하 4.0도. 바람 북서 11미터. 눈가 회복.",
+    "9월 16일, 밤 뉴스. 태풍은 남해안을 비껴가겠습니다. 비껴가도, 대비는 하십시오. 영도에 계신 분들은 특히요.",
     "*",
-    "2월 4일 09시. 맑음. 기온 1.2도. 입춘. 매화, 꽃눈 부풂. 첫인사.",
+    "11월 12일, 밤 뉴스. 철 지난 소나기 소식이 있습니다. 우산은 괜히 들고 나와도 괜찮습니다. 괜히 든 우산이 제일 좋은 우산입니다.",
     "*",
-    "3월 9일 09시. 맑음. 기온 6.1도. 매화 개화. 서른세 날.",
+    "2월 4일, 아침 뉴스. 오늘은 입춘입니다. 기온으로 보면 봄은 아직 한 달쯤 남았습니다. 그래도 기다리는 건 자유입니다.",
     "*",
-    "4월 3일 18시. 흐림. 기온 11.2도. 바람 남서 3미터. 강수확률 60퍼센트.",
-    "오늘은 우산을 챙겼다.",
+    "7월 14일, 밤 뉴스. 1년 전 오늘, 이 자리에서 원고에 없는 말을 했습니다. 오늘 전국은 대체로 맑겠습니다. 곡성 동산리, 강씨네 주유소 사장님. 오늘도 맑음입니다. 내일도 맑음으로 하겠습니다.",
   ];
   const AFTERWORD_SIGNATURE = '';
 
@@ -51,7 +50,7 @@
   const INSPIRATIONS = [
     { kind: '음악', by: '성시경', title: '넌 감동이었어', year: 2002, url: 'https://www.youtube.com/results?search_query=%EC%84%B1%EC%8B%9C%EA%B2%BD%20%EB%84%8C%20%EA%B0%90%EB%8F%99%EC%9D%B4%EC%97%88%EC%96%B4' },
     { kind: '음악', by: '김연우', title: '사랑한다는 흔한 말', year: 2006, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EC%97%B0%EC%9A%B0%20%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4%EB%8A%94%20%ED%9D%94%ED%95%9C%20%EB%A7%90' },
-    { kind: '음악', by: '김동률', title: '사랑한다 말해도', year: 2014, url: 'https://www.youtube.com/results?search_query=%EA%B9%80%EB%8F%99%EB%A5%A0%20%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4%20%EB%A7%90%ED%95%B4%EB%8F%84' },
+    { kind: '음악', by: '기리보이', title: '이상기후', year: '', url: 'https://www.youtube.com/results?search_query=%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4%20%EC%9D%B4%EC%83%81%EA%B8%B0%ED%9B%84' },
     { kind: '음악', by: '박효신', title: '좋은 사람', year: 2002, url: 'https://www.youtube.com/results?search_query=%EB%B0%95%ED%9A%A8%EC%8B%A0%20%EC%A2%8B%EC%9D%80%20%EC%82%AC%EB%9E%8C' },
     { kind: '음악', by: '전람회', title: '기억의 습작', year: 1994, url: 'https://www.youtube.com/results?search_query=%EC%A0%84%EB%9E%8C%ED%9A%8C%20%EA%B8%B0%EC%96%B5%EC%9D%98%20%EC%8A%B5%EC%9E%91' },
     { kind: '음악', by: '한로로', title: '화해', year: 2023, url: 'https://www.youtube.com/results?search_query=%ED%95%9C%EB%A1%9C%EB%A1%9C%20%ED%99%94%ED%95%B4' },
@@ -62,7 +61,7 @@
   ];
 
   // Signs and inscriptions quoted in the text → bold
-  const SIGN_TEXTS = ['0+0', '立春大吉', '서랑도, 매화 개화 3월 9일.'];
+  const SIGN_TEXTS = ['0+0: 아무것도 안 사도 됨. 대신 사장 있음.', '(충전도 됨.)', '내일 곡성: 맑음.', '강지운: 맑음.', '니가 안 물어봐서, 내가 먼저 말할게.', '소규모 산지 마을 산사태 조기경보 — 예보 격자 밖의 사람들.'];
   function paraHtml(text) {
     if (/^\*[^*]+\*$/.test(text)) return `<em class="aside">${escapeHtml(text.slice(1, -1))}</em>`; // 3장 듀엣 독백
     let html = escapeHtml(text);
@@ -72,17 +71,17 @@
 
   // Line-art motif per chapter (64×64, stroke = currentColor)
   const CHAPTER_MOTIFS = {
-    1: `<svg viewBox="0 0 64 64"><path d="M6 32a16 14 0 0 1 32 0z"/><path d="M22 32v15a3 3 0 0 1-6 0"/><path d="M50 12l3.5 9-2 21h-3l-2-21z"/><path d="M50 42v7a3 3 0 0 1-6 0"/></svg>`,
-    2: `<svg viewBox="0 0 64 64"><rect x="20" y="8" width="24" height="48" rx="4"/><path d="M27 18h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-6l-4 3.5V30a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3z"/><path d="M29 50h6"/></svg>`,
-    3: `<svg viewBox="0 0 64 64"><path d="M18 33h28M23 33v17M41 33v17"/><path d="M7 26v24M7 40h8v10"/><path d="M57 26v24M57 40h-8v10"/></svg>`,
-    4: `<svg viewBox="0 0 64 64"><path d="M16 9l-2 5M30 7l-2 5M44 10l-2 5M23 20l-2 5M37 20l-2 5" opacity=".6"/><path d="M12 50V44l10-2 6-5h9c6 0 12 4 15 9v4z"/><path d="M12 50h40"/></svg>`,
-    5: `<svg viewBox="0 0 64 64"><path d="M32 18c-5-3-12-4-20-3v32c8-1 15 0 20 3 5-3 12-4 20-3V15c-8-1-15 0-20 3z"/><path d="M32 18v32"/><path d="M17 25h10M17 31h10M37 25h10M37 31h6" opacity=".55"/><circle cx="50" cy="8" r="1.4" fill="currentColor" stroke="none"/><circle cx="56" cy="13" r="1" fill="currentColor" stroke="none"/></svg>`,
-    6: `<svg viewBox="0 0 64 64"><path d="M32 58V16"/><path d="M14 16h32M40 11l6 5-6 5M14 11v10"/><path d="M24 30h16M32 24v12" opacity=".55"/><path d="M24 58h16"/></svg>`,
+    1: `<svg viewBox="0 0 64 64"><circle cx="22" cy="20" r="7"/><path d="M22 6v4M22 30v4M8 20h4M32 20h4M12 10l3 3M32 10l-3 3"/><path d="M40 42V16a4 4 0 0 1 8 0v26"/><circle cx="44" cy="48" r="6"/></svg>`,
+    2: `<svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="16"/><circle cx="32" cy="26" r="2.5"/><path d="M32 26c0-8 5-11 9-8M32 26c7 3 7 9 3 11M32 26c-7 3-11 0-10-5" opacity=".7"/><path d="M32 42v10M22 56h20"/></svg>`,
+    3: `<svg viewBox="0 0 64 64"><circle cx="22" cy="16" r="6"/><path d="M22 4v3M10 16h3M13 7l2 2"/><path d="M20 38h26a8 8 0 0 0-1-16 11 11 0 0 0-21 2 7 7 0 0 0-4 14z"/><path d="M26 44l-2 6M36 44l-2 6M46 44l-2 6" opacity=".6"/></svg>`,
+    4: `<svg viewBox="0 0 64 64"><rect x="10" y="8" width="24" height="48" rx="1"/><circle cx="29" cy="33" r="1.4" fill="currentColor" stroke="none"/><path d="M46 12c0-4 6-4 6 0v4"/><path d="M52 16l-3 6-2 20h6l-2-20z"/><path d="M42 30l-3 6M60 28l-3 6M44 46l-3 6M60 44l-3 6" opacity=".55"/></svg>`,
+    5: `<svg viewBox="0 0 64 64"><path d="M8 20h48v6H8z"/><path d="M16 26v28M48 26v28"/><rect x="26" y="36" width="12" height="18" rx="2"/><circle cx="14" cy="10" r="1.3" fill="currentColor" stroke="none"/><circle cx="32" cy="7" r="1.3" fill="currentColor" stroke="none"/><circle cx="48" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>`,
+    6: `<svg viewBox="0 0 64 64"><rect x="25" y="8" width="14" height="26" rx="7"/><path d="M19 28a13 13 0 0 0 26 0M32 41v10M24 56h16"/></svg>`,
     7: `<svg viewBox="0 0 64 64"><circle cx="15" cy="44" r="10"/><circle cx="49" cy="44" r="10"/><path d="M15 44l10-16h16l8 16M25 28l7 16H15M41 28l-2-6h-5M22 25h6"/></svg>`,
     8: `<svg viewBox="0 0 64 64"><path d="M8 56C20 46 30 36 48 14"/><path d="M28 38c4-1 9 0 13 3"/><circle cx="45" cy="14" r="1.8"/><circle cx="45" cy="8.5" r="3"/><circle cx="50.2" cy="12.3" r="3"/><circle cx="48.2" cy="18.5" r="3"/><circle cx="41.8" cy="18.5" r="3"/><circle cx="39.8" cy="12.3" r="3"/><ellipse cx="43" cy="42" rx="2" ry="3"/></svg>`,
-    9: `<svg viewBox="0 0 64 64"><path d="M14 40l9-15 19-5 10 13-6 15-21 3z"/><path d="M21 37l24-9" opacity=".5"/></svg>`,
-    10: `<svg viewBox="0 0 64 64"><path d="M10 28a22 13 0 0 1 44 0z"/><path d="M32 15v-4"/><circle cx="24" cy="37" r="3.2"/><circle cx="40" cy="37" r="3.2"/><path d="M24 41v15M40 41v15"/><path d="M6 36l-1.5 4M58 36l-1.5 4M7 48l-1.5 4M58 48l-1.5 4" opacity=".55"/></svg>`,
-    cover: `<svg viewBox="0 0 64 64"><path d="M10 30a22 13 0 0 1 44 0z"/><path d="M32 17v-4M32 30v16a3 3 0 0 1-6 0"/></svg>`,
+    9: `<svg viewBox="0 0 64 64"><path d="M6 54L26 18l14 16 18 20z"/><path d="M28 30c2 8 6 14 10 24" opacity=".6"/><path d="M40 54v-6h10v6M39 48l6-5 6 5"/><path d="M12 8l-2 5M24 5l-2 5M40 8l-2 5M54 10l-2 5" opacity=".55"/></svg>`,
+    10: `<svg viewBox="0 0 64 64"><rect x="8" y="14" width="16" height="30" rx="2"/><rect x="11" y="18" width="10" height="7" rx="1"/><path d="M16 44v10M24 30c7 0 7 10 0 10"/><circle cx="38" cy="30" r="3.2"/><circle cx="50" cy="30" r="3.2"/><path d="M38 34v20M50 34v20"/></svg>`,
+    cover: `<svg viewBox="0 0 64 64"><path d="M8 22h48v6H8z"/><path d="M16 28v26M48 28v26"/><rect x="26" y="36" width="12" height="18" rx="2"/></svg>`,
     end: `<svg viewBox="0 0 64 64"><path d="M22 54V24M42 54V24"/><circle cx="22" cy="18" r="3" fill="currentColor" stroke="none"/><circle cx="42" cy="18" r="3" fill="currentColor" stroke="none"/></svg>`
   };
 
@@ -111,23 +110,23 @@
     seasonFx: true
   };
 
-  // Season per chapter — 초겨울 → 첫눈 → 섬의 겨울 → 입춘 → 봄비 (7장은 여름 회상)
+  // Season per chapter — 곡성의 여름 → 가을 → 이상기후 → 겨울 폭우 → 첫눈 → 서울 겨울 → 입춘 → 극한호우 → 비 갠 여름밤
   const CHAPTER_SEASON = {
-    1: { key: 'none', density: 0 },        // 초겨울, 셔터
-    2: { key: 'none', density: 0 },        // 휴대폰, 0+0 달력
-    3: { key: 'snow', density: 0.3 },      // 작년 겨울 식탁
-    4: { key: 'rain', density: 0.7 },      // 예보에 없던 겨울비
-    5: { key: 'snow', density: 0.6 },      // 늦은 첫눈, 습작
-    6: { key: 'snow', density: 0.5 },      // 섬의 겨울바람
-    7: { key: 'fireflies', density: 0.5 }, // 옥탑의 첫여름 회상
-    8: { key: 'petals', density: 0.3 },    // 입춘, 매화 꽃눈
-    9: { key: 'rain', density: 0.5 },      // 봄비, 모난 돌
-    10: { key: 'petals', density: 0.2 }    // 사월, 횡단보도
+    1: { key: 'fireflies', density: 0.5 }, // 7월 폭염, 섬진강 여름밤
+    2: { key: 'leaves', density: 0.4 },    // 늦여름에서 가을
+    3: { key: 'rain', density: 0.4 },      // 11월 이상고온, 철 지난 소나기
+    4: { key: 'rain', density: 1 },        // 12월 겨울 폭우
+    5: { key: 'snow', density: 0.6 },      // 1월 첫눈, 캐노피
+    6: { key: 'snow', density: 0.3 },      // 서울의 겨울
+    7: { key: 'leaves', density: 0.5 },    // 가을 회상, 세차장과 자전거길
+    8: { key: 'petals', density: 0.3 },    // 입춘, 이른 매화
+    9: { key: 'rain', density: 1 },        // 7월 극한호우
+    10: { key: 'fireflies', density: 0.4 } // 비 갠 여름밤, 별
   };
 
   function seasonFor(chapterId, pageType) {
     if (pageType === 'cover' || chapterId === 0) return { key: 'none', density: 0 };
-    if (chapterId === CREDITS_CHAPTER_ID) return { key: 'none', density: 0 }; // 관측 노트 — 맑은 밤
+    if (chapterId === CREDITS_CHAPTER_ID) return { key: 'none', density: 0 }; // 클로징 멘트 — 맑은 밤
     return CHAPTER_SEASON[chapterId] || { key: 'none', density: 0 };
   }
 
@@ -355,7 +354,7 @@
       <div class="credits-top">
                 <div class="credits-star-wrap"><span class="credits-star"></span></div>
         <span class="chapter-kicker">에필로그</span>
-        <h2 class="credits-title">관측 노트, 뒷장</h2>
+        <h2 class="credits-title">클로징 멘트</h2>
       </div>`;
   const creditsBottomHtml = (withButton) => `
       <div class="credits-bottom">
@@ -447,8 +446,8 @@
     chapterStartPages[CREDITS_CHAPTER_ID] = pages.length;
     measureBody.classList.add('credits-page'); // measure with the credits typography, same as the rendered page
     const pushCredits = (pg, offset) => pages.push({
-      type: 'credits', chapterId: CREDITS_CHAPTER_ID, chapterTitle: '관측 노트, 뒷장', startParaIndex: pg.start + offset, endParaIndex: pg.end + offset,
-      html: `${contentHeaderHtml('관측 노트, 뒷장')}<div class="page-body-content credits-page">${pg.html}</div>${contentFooterHtml('')}`
+      type: 'credits', chapterId: CREDITS_CHAPTER_ID, chapterTitle: '클로징 멘트', startParaIndex: pg.start + offset, endParaIndex: pg.end + offset,
+      html: `${contentHeaderHtml('클로징 멘트')}<div class="page-body-content credits-page">${pg.html}</div>${contentFooterHtml('')}`
     });
     // Signature is the tail: it never sits alone, the last paragraph moves with it if needed
     fillPages(measureBody, maxBodyHeight, AFTERWORD_ITEMS, creditsItemHtml, CREDITS_TOP_HTML, SIGNATURE_HTML).forEach((pg) => pushCredits(pg, 0));
@@ -718,7 +717,7 @@
         if (Number(n.getAttribute('data-ratio')) <= ratio + 0.0001) {
           const id = Number(n.getAttribute('data-chapter'));
           const chap = (window.NOVEL_DATA.chapters || []).find((c) => c.id === id);
-          title = id === CREDITS_CHAPTER_ID ? '관측 노트, 뒷장' : chap ? chap.fullTitle : '표지';
+          title = id === CREDITS_CHAPTER_ID ? '클로징 멘트' : chap ? chap.fullTitle : '표지';
         }
       });
       return `${title} · ${Math.round(ratio * 100)}%`;
@@ -797,7 +796,7 @@
     if (state.mode === 'scroll') {
       chapterId = scrollCurrentChapter();
       const chap = (window.NOVEL_DATA.chapters || []).find((c) => c.id === chapterId);
-      el.deckChapter.textContent = chapterId === CREDITS_CHAPTER_ID ? '관측 노트, 뒷장' : chap ? chap.fullTitle : '표지';
+      el.deckChapter.textContent = chapterId === CREDITS_CHAPTER_ID ? '클로징 멘트' : chap ? chap.fullTitle : '표지';
       el.deckPage.textContent = `${pct}% 읽음`;
     } else if (page) {
       chapterId = page.chapterId;
@@ -849,7 +848,7 @@
         right: `${firstContent && firstContent.pageNo ? firstContent.pageNo : 1}쪽`
       }));
     });
-    items.push(tocItemHtml({ chapterId: CREDITS_CHAPTER_ID, motif: CHAPTER_MOTIFS.end, num: 'EPILOGUE', title: '관측 노트, 뒷장', right: '끝' }));
+    items.push(tocItemHtml({ chapterId: CREDITS_CHAPTER_ID, motif: CHAPTER_MOTIFS.end, num: 'EPILOGUE', title: '클로징 멘트', right: '끝' }));
     el.tocList.innerHTML = items.join('');
     el.tocList.querySelectorAll('.toc-item').forEach((li) => {
       li.addEventListener('click', () => {
