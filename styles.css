@@ -880,3 +880,7 @@ p.novel-para:has(> .who) { display: flow-root; }
 .cover-village { fill: var(--accent-2); opacity: 0.75; }
 @keyframes canopyHum { 0%, 100% { opacity: 1; } 50% { opacity: 0.86; } }
 .cover-epigraph .epigraph-gap { margin-top: 0.75em; }
+
+/* 제사 네 줄 간격을 똑같이, 조금 촘촘하게 */
+.cover-epigraph { line-height: 1.5; }
+.cover-epigraph .epigraph-gap { margin-top: 0; }
