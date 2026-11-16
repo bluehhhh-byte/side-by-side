@@ -40,7 +40,16 @@ def load_novel():
     return json.loads(src[src.index("{"): src.rindex("}") + 1])
 
 
+def silence(seconds=1.2):
+    # SunHi returns no audio for letterless lines like "…" → same-format silent mp3 (24kHz mono 48k)
+    import subprocess
+    return subprocess.run(["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(seconds),
+                           "-c:a", "libmp3lame", "-b:a", "48k", "-write_xing", "0", "-id3v2_version", "0", "-f", "mp3", "-"], capture_output=True, check=True).stdout
+
+
 async def synth(text, cfg, sem, tries=5):
+    if not re.search(r"[가-힣A-Za-z0-9]", text):
+        return silence()
     last = None
     async with sem:
         for i in range(tries):
